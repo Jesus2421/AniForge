@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Tema base para Fire TV:
+        - NoActionBar → la barra de acción ocupa espacio innecesario en TV
+        - DarkActionBar como base para tema oscuro general
+    -->
+    <style name="Theme.AniForge" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/accent_fire</item>
+        <item name="colorPrimaryDark">@color/bg_dark</item>
+        <item name="colorAccent">@color/accent_fire</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <!-- CRÍTICO FIRE TV: deshabilitar animación de ventana táctil -->
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <!-- Tema para el PlayerActivity — pantalla completa sin status bar -->
+    <style name="Theme.AniForge.Player" parent="Theme.AniForge">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

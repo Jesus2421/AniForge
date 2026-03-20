@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_anime_card.xml
+    Tarjeta de anime: fondo oscuro, borde naranja cuando está enfocada con D-pad.
+    CRÍTICO PARA FIRE TV: el selector de estado "focused" es lo que da feedback
+    visual al usuario cuando navega con el control remoto.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Estado: enfocado con D-pad -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_card_focused" />
+            <stroke android:width="3dp" android:color="@color/focused_border" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Estado: presionado -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/accent_fire" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Estado: normal -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_card" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+</selector>

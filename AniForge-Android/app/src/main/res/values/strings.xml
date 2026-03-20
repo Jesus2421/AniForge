@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AniForge</string>
+    <string name="search_hint">Buscar anime...</string>
+    <string name="no_results">No se encontraron resultados</string>
+    <string name="loading">Cargando...</string>
+    <string name="error_network">Error de conexión. Verifica tu internet.</string>
+    <string name="episode_format">Episodio %d</string>
+</resources>

@@ -1,0 +1,23 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Android
+app/build/
+app/release/
+
+# Python (del proyecto original — no deben estar en esta rama)
+venv/
+__pycache__/
+*.pyc
+*.spec
+dist/
+build/main/
+*.egg-info/

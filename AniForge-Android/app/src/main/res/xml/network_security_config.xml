@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Configuración de seguridad de red.
+    AnimeFLV usa HTTPS, pero algunos servidores de video pueden redirigir a HTTP.
+    Este archivo permite dominios específicos sin romper la seguridad general.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- AnimeFLV y su CDN -->
+        <domain includeSubdomains="true">animeflv.net</domain>
+        <domain includeSubdomains="true">cdn.animeflv.net</domain>
+        <!-- Servidores de video conocidos (ampliar según sea necesario) -->
+        <domain includeSubdomains="true">streamtape.com</domain>
+        <domain includeSubdomains="true">doodstream.com</domain>
+        <domain includeSubdomains="true">filemoon.sx</domain>
+    </domain-config>
+</network-security-config>

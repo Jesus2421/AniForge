@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:background="@drawable/bg_episode_normal"
+    android:layout_marginBottom="4dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/imgEpisodePreview"
+        android:layout_width="120dp"
+        android:layout_height="68dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Miniatura del episodio" />
+
+    <TextView
+        android:id="@+id/tvEpisodeNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp" />
+
+    <!-- Icono de play -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="▶"
+        android:textSize="24sp"
+        android:textColor="@color/accent_fire"
+        android:paddingEnd="8dp" />
+
+</LinearLayout>

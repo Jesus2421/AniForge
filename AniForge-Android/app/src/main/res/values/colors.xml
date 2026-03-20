@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fondos oscuros — ideales para pantallas de TV en habitaciones oscuras -->
+    <color name="bg_dark">#0D0D0D</color>
+    <color name="bg_card">#1A1A1A</color>
+    <color name="bg_card_focused">#2A2A2A</color>
+
+    <!-- Accentos -->
+    <color name="accent_fire">#FF4500</color>   <!-- naranja fuego — identidad AniForge -->
+    <color name="accent_gold">#FFD700</color>   <!-- dorado para ratings -->
+
+    <!-- Textos -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#AAAAAA</color>
+
+    <!-- Estados -->
+    <color name="focused_border">#FF4500</color>
+    <color name="error_red">#FF3333</color>
+
+    <!-- Requeridos por Material -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

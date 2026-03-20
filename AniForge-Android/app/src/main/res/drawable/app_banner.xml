@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Banner de la app para Fire TV.
+    Fire TV muestra este banner (320x180dp) en el launcher en lugar del ícono.
+    REEMPLAZAR con un PNG real de 320x180dp con el logo de AniForge.
+    Por ahora usamos un shape con el nombre de la app.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/bg_dark" />
+</shape>
