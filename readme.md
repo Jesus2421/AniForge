@@ -1,131 +1,92 @@
-# 🔥 AniForge
+🔥 AniForge — Rama ParaLaAPK
+Port completo del proyecto Python → Java/Android para Fire TV.
 
-> *Donde el anime se forja.*
+🚀 Cómo crear la rama y subir este código
+bash# 1. Clonar tu repositorio original
+git clone https://github.com/Jesus2421/AniForge.git
+cd AniForge
 
-AniForge es una aplicación moderna para descubrir, explorar y disfrutar anime con una experiencia rápida, limpia y sin ruido. Pensada para fans exigentes y construida con mentalidad de producto serio: rendimiento, estética y control.
+# 2. Crear la rama nueva
+git checkout -b ParaLaAPK
 
----
+# 3. Copiar TODO el contenido de esta carpeta AniForge-Android/ dentro del repo
+#    (la carpeta app/, build.gradle, settings.gradle, gradle.properties, etc.)
 
-## 🚀 Características
+# 4. Añadir, commitear y subir
+git add .
+git commit -m "feat: port completo Python → Java/Android para Fire TV"
+git push origin ParaLaAPK
 
-- 📺 **Streaming de anime** con reproducción fluida
-- 🔍 **Búsqueda avanzada** por título, género y estado
-- ❤️ **Lista de favoritos** persistente
-- 🕒 **Historial de visualización**
-- 🌙 **Modo oscuro** (porque somos gente civilizada)
-- ⚡ **Interfaz rápida y minimalista**
-- 🔥 Arquitectura pensada para escalar
+🛠️ Requisitos para compilar
 
----
+Android Studio Hedgehog 2023.1.1 o superior
+JDK 11 (incluido en Android Studio)
+Android SDK API 34
+Conexión a internet (descarga dependencias de Gradle la primera vez)
 
-## 🧠 Filosofía
+Pasos en Android Studio
 
-AniForge no pretende ser solo otra app para ver anime.
+File → Open → selecciona esta carpeta raíz
+Espera a que Gradle sincronice (primera vez tarda 2-5 min)
+Conecta tu Fire TV por ADB o usa un emulador TV
+Run → Run 'app'
 
-La idea es **forjar una experiencia**:
-- Sin clutter
-- Sin decisiones arbitrarias
-- Sin tratar al usuario como idiota
+Habilitar ADB en Fire TV
+Ajustes → Mi Fire TV → Opciones de desarrollador
+→ Activar "Depuración ADB"
+→ Activar "Aplicaciones de origen desconocido"
+bash# Conectar Fire TV por red (misma WiFi)
+adb connect <IP_DEL_FIRE_TV>:5555
+adb install app/build/outputs/apk/debug/app-debug.apk
 
-Menos distracciones. Más anime.
+📁 Estructura del proyecto
+app/src/main/
+├── AndroidManifest.xml          ← Permisos, actividades, leanback launcher
+├── java/com/aniforge/
+│   ├── api/
+│   │   ├── AnimeFLVClient.java  ← Port de animeflv.py (OkHttp + Jsoup)
+│   │   └── AnimeFLVParseException.java  ← Port de exception.py
+│   ├── model/
+│   │   ├── AnimeInfo.java       ← Port del dataclass AnimeInfo
+│   │   ├── EpisodeInfo.java     ← Port del dataclass EpisodeInfo
+│   │   └── VideoServer.java     ← Port de DownloadLinkInfo
+│   └── ui/
+│       ├── home/
+│       │   ├── MainActivity.java       ← Pantalla principal
+│       │   ├── MainViewModel.java      ← Lógica async (reemplaza main.py)
+│       │   └── AnimeCardAdapter.java   ← Grid de animes
+│       ├── detail/
+│       │   ├── DetailActivity.java     ← Detalle + lista de episodios
+│       │   └── EpisodeAdapter.java
+│       ├── search/
+│       │   └── SearchActivity.java     ← Búsqueda con teclado Fire TV
+│       └── player/
+│           └── PlayerActivity.java     ← ExoPlayer con control remoto
+└── res/
+    ├── layout/                  ← Todos los XMLs de pantalla
+    ├── values/
+    │   ├── colors.xml           ← Paleta oscura (bg #0D0D0D, accent #FF4500)
+    │   ├── strings.xml
+    │   └── themes.xml           ← Tema NoActionBar (requerido para TV)
+    ├── drawable/                ← Selectores de estado focused para D-pad
+    └── xml/
+        └── network_security_config.xml
 
----
+🐛 Bugs del proyecto Python que se corrigieron aquí
+#Bug en PythonCorrección en Java1ANIME_URL + "/" + id generaba doble slashCorregido a ANIME_URL + id2AnimeFLVParseError en _process_anime_list_info abortaba toda la listaAhora se loguea el error y se continúa con los demás elementos3Sin verificación del código HTTP de respuestaresponse.isSuccessful() antes de leer el body4Sin fallback entre servidores de videotryNextServer() automático en PlayerActivity5Sin manejo de errores de red en main.pyCada llamada tiene try/catch + errorMessage LiveData6No había soporte D-pad (inutilizable en Fire TV)Todos los elementos tienen focusable, selectores de estado y onFocusChangeListener7venv/ commiteado en el repo.gitignore debe incluir venv/, dist/, build/, *.spec
 
-## 🛠️ Stack tecnológico
+📦 Dependencias clave
+Python (original)Java/Android (equivalente)cloudscraperOkHttp 4.12 con headers de navegadorBeautifulSoupJsoup 1.17json (stdlib)org.json (incluido en Android)asyncioExecutorService + LiveDatatkinter / consolaActivities + RecyclerView + Leanback—ExoPlayer (Media3) para reproducción—Glide para imágenes async
 
-> *(Ajusta esta sección según lo que uses realmente)*
+⚠️ Pendiente (próximos pasos)
 
-- **Frontend:** Flutter / React Native / Jetpack Compose
-- **Backend:** Node.js / FastAPI / Spring Boot
-- **Base de datos:** PostgreSQL / Firebase / MongoDB
-- **Autenticación:** JWT / Firebase Auth
-- **APIs externas:** fuentes de metadata de anime
+ Reemplazar app_banner.xml con un PNG real de 320×180dp (requerido por Fire TV Store)
+ Reemplazar ic_launcher con el logo de AniForge
+ Implementar WebView o extractor de iframe para servidores que no dan URL directa (Streamtape, etc.)
+ Añadir caché local con Room para favoritos e historial
+ Manejar el caso de Cloudflare challenge (algunos servidores lo activan)
+ Firmar el APK para distribución (Build → Generate Signed APK)
 
----
 
-## 📦 Instalación
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/aniforge.git
-
-# Entrar al proyecto
-cd aniforge
-
-# Instalar dependencias
-npm install
-
-# Ejecutar en modo desarrollo
-npm run dev
-```
-
----
-
-## ⚙️ Configuración
-
-Crea un archivo `.env` en la raíz del proyecto:
-
-```env
-API_URL=tu_endpoint
-APP_ENV=development
-```
-
----
-
-## 🧪 Tests
-
-```bash
-npm run test
-```
-
-Porque incluso el anime necesita disciplina.
-
----
-
-## 📐 Estructura del proyecto
-
-```text
-aniforge/
-├── animeflv-api/    # Wrapper / cliente para consumir AnimeFLV
-├── buildi/          # Archivos de build (output intermedio)
-├── dist/            # Distribución final / binarios
-├── logo/            # Recursos gráficos y branding
-├── venv/            # Entorno virtual de Python
-├── main.py          # Punto de entrada de la aplicación
-└── README.md        # Este archivo
-```
-
----
-
-## 🧩 Roadmap
-
-- [ ] Sistema de recomendaciones
-- [ ] Descargas offline
-- [ ] Perfiles de usuario
-- [ ] Sync multiplataforma
-- [ ] Forge Mode™ (modo intensivo sin distracciones)
-
----
-
-## ⚠️ Disclaimer
-
-AniForge no aloja contenido directamente. Actúa como cliente que consume fuentes externas.
-
-Todo el contenido pertenece a sus respectivos autores y estudios.
-
----
-
-## 📜 Licencia
-
-MIT License.
-
-Haz lo que quieras, pero hazlo bien.
-
----
-
-## 👊 Autor
-
-Desarrollado con criterio y café.
-
-> *Anime no es solo entretenimiento. Es ingeniería emocional.*
-
+📜 Licencia
+MIT — igual que el proyecto original.
